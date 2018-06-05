@@ -1,0 +1,37 @@
+[
+   {
+      "null-node":null
+   },
+   {
+      "not-null-node":{
+         "not-null-node-ch1":{
+
+         },
+         "not-null-node-ch2":5.05,
+         "not-null-node-ch3":{
+            "not-null-node-ch3-ch1":"depth"
+         },
+         "not-null-node-ch4":"string"
+      }
+   },
+   {
+      "arr1":[
+         1,
+         {
+            "arr1-ch2":"2"
+         },
+         {
+            "arr1-ch3":3
+         }
+      ]
+   },
+   [
+      {
+         "arr2-ch1":"test"
+      },
+      {
+         "arr2-ch2":0
+      }
+   ],
+   "a value to be ignored"
+]
