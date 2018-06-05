@@ -12,6 +12,7 @@ import javax.json.JsonReader;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
 class FilterJsonTest {
 
@@ -28,6 +29,15 @@ class FilterJsonTest {
     @Test
     void empty3() throws Exception {
         checkJsonFiltering("all-cases", "empty" /* no DEA, filter all */);
+    }
+
+    @Test
+    void nullSpecNoFiltering() throws Exception {
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        JsonArray input = jsonArrayFromFile("all-cases");
+        FilterJson.extract(input, null, arrayBuilder);
+
+        JSONAssert.assertEquals(input.toString(), arrayBuilder.build().toString(), true);
     }
 
     @Test
@@ -106,7 +116,10 @@ class FilterJsonTest {
 
         FilterJson.extract(jsonArrayFromFile(inpFile), Arrays.asList(specs), arrayBuilder);
 
-        JSONAssert.assertEquals(jsonArrayFromFile(expFile).toString(), arrayBuilder.build().toString(), true);
+        //        assertEquals(jsonArrayFromFile(expFile).toString(), arrayBuilder.build().toString());
+
+        JSONAssert.assertEquals(jsonArrayFromFile(expFile).toString(), arrayBuilder.build().toString(),
+            JSONCompareMode.STRICT);
     }
 
     protected JsonArray jsonArrayFromFile(String name) {

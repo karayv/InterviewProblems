@@ -1,8 +1,8 @@
+
 package interview;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DataExtractionAttribute {
     private String name = null;
@@ -53,21 +53,36 @@ public class DataExtractionAttribute {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        DataExtractionAttribute dataExtractionAttribute = (DataExtractionAttribute) o;
-        return Objects.equals(this.name, dataExtractionAttribute.name)
-                && Objects.equals(this.children, dataExtractionAttribute.children);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((children == null) ? 0 : children.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, children);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DataExtractionAttribute other = (DataExtractionAttribute) obj;
+        if (children == null) {
+            if (other.children != null)
+                return false;
+        }
+        else if (!children.equals(other.children))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        }
+        else if (!name.equals(other.name))
+            return false;
+        return true;
     }
 
     @Override
