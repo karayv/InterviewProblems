@@ -53,6 +53,7 @@ public final class FilterJson {
             return Json.createArrayBuilder(src);
         }
 
+        // TODO potentially these builder objects may put extra load on GC. This can be optimized.
         JsonArrayBuilder res = Json.createArrayBuilder();
         boolean nodeMatched = false;
 
@@ -77,7 +78,7 @@ public final class FilterJson {
         JsonObjectBuilder res = Json.createObjectBuilder();
         boolean nodeMatched = false;
 
-        // we peak smaller key set to optimize matching
+        // we pick smaller key set to optimize matching
         for (String name : smallerKeySet(src.keySet(), attrMap.keySet())) {
             if (attrMap.containsKey(name) && src.containsKey(name)) {
                 List<DataExtractionAttribute> childrenSpec = attrMap.get(name).getChildren();

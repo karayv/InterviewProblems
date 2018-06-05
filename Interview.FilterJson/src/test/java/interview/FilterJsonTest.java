@@ -119,7 +119,7 @@ class FilterJsonTest {
         //        assertEquals(jsonArrayFromFile(expFile).toString(), arrayBuilder.build().toString());
 
         JSONAssert.assertEquals(jsonArrayFromFile(expFile).toString(), arrayBuilder.build().toString(),
-            JSONCompareMode.STRICT);
+            JSONCompareMode.STRICT_ORDER);
     }
 
     protected JsonArray jsonArrayFromFile(String name) {
