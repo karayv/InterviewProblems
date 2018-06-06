@@ -30,7 +30,7 @@
          "arr2-ch1":"test"
       },
       {
-         "arr2-ch2":0
+         "arr2-ch2":true
       }
    ],
    "a value to be ignored"
